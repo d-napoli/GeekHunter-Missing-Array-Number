@@ -1,27 +1,27 @@
-def ordena_array(array):
-    array_ordenado = []
-    array_ordenado.append(int(array[0]))
+def orders_array(array):
+    ordered_array = []
+    ordered_array.append(int(array[0]))
 
     del array[0]
 
     for i in array:
-        num_atual = int(i)
-        j = len(array_ordenado)
+        actual_number = int(i)
+        j = len(ordered_array)
         k = 0
         while k < j:
             temp_pos = -999
-            if num_atual < array_ordenado[k]:
+            if actual_number < ordered_array[k]:
                 temp_pos = k
                 k = j + 1
             k += 1
 
         if temp_pos != -999:
-            array_ordenado.insert(temp_pos, num_atual)
+            ordered_array.insert(temp_pos, actual_number)
         else:
-            array_ordenado.append(num_atual)
-    return array_ordenado
+            ordered_array.append(actual_number)
+    return ordered_array
 
-def numero_faltando_array(array):
+def missing_array_number(array):
     i = 0
     while i < len(array) - 1:
         if array[i] + 1 != array[i + 1]:
@@ -30,15 +30,15 @@ def numero_faltando_array(array):
     return array[len(array) - 1] + 1
 
 def main():
-    print("Informe a quantidade de arrays")
-    qtd_inputs = input()
+    print("How many arrays do you want to order?")
+    num_inputs = input()
     count = 0
 
-    while count < int(qtd_inputs):
-        print("Informe o array:")
-        array_ordenado = ordena_array(input()[1:-1].split(','))
-        numero_faltando = numero_faltando_array(array_ordenado)
-        print(numero_faltando)
+    while count < int(num_inputs):
+        print("Input the array in the following format: [number, number, number]")
+        ordered_array = orders_array(input()[1:-1].split(','))
+        missing_number = missing_array_number(ordered_array)
+        print(missing_number)
         count += 1
 
 main()
